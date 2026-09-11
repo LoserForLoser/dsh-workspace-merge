@@ -1,6 +1,6 @@
 url: https://github.com/LoserForLoser/dsh-workspace-merge
-name: dsh-workspace-merge
+name: LoserForLoser/dsh-workspace-merge
 category: workflow
 description:
-  en: "Merge several local project roots into one named workspace group so a single session can read, diff and edit the same relative path across all of them, with a per-root outcome and no sandbox bypass."
-  zh: "把多个本地项目根目录合并为一个具名工作区组，让一个会话就能读取、比对并同步修改所有项目中的同一相对路径；逐目录报告结果，且不放宽沙箱策略。"
+  en: Merges several local project roots into one named workspace group, so a single session can read, diff and edit the same relative path across all of them with a per-root outcome and no sandbox bypass.
+  zh: 把多个本地项目根目录合并为一个具名工作区组，让一个会话就能读取、比对并同步修改所有项目中的同一相对路径；逐目录报告结果，且不放宽沙箱策略。
