@@ -1,0 +1,42 @@
+{
+  "name": "dsh-workspace-merge",
+  "version": "0.1.0",
+  "description": "Merge several local project roots into one named workspace group so a single DSH session can read, diff and edit the same relative path across all of them.",
+  "type": "module",
+  "license": "MIT",
+  "author": "宋朝阳 <songchaoyang@jilinxiangyun.com>",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "workspace",
+    "multi-root",
+    "monorepo"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "lib/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node test/run-test.mjs"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,13 @@
+# The dsh-workspace-merge bundle patch.
+#
+# One host row publishes the workspace-group registry and its eight `ws_*` tools.
+# The row is a host row because the registry (a JSON file under $DSH_HOME) and the
+# sandbox-policy handling behind every write are shared, process-wide concerns —
+# not something one agent preset should privately own.
+#
+# Nothing else is needed: the tools appear in every agent that mounts this
+# profile layer, and the row's prompt section stays empty until a group exists,
+# so an unused install costs zero prompt tokens.
+- insert:
+    - id: workspace-merge
+      name: dsh-workspace-merge
