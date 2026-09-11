@@ -1,10 +1,55 @@
 # Publishing dsh-workspace-merge
 
-Owner: **LoserForLoser** (447231214@qq.com). Everything below is ready to run
-from the repository root; step 0 lists the only actions that need a human,
-because this machine has no GitHub credential that can create repositories.
+Owner: **LoserForLoser** (447231214@qq.com).
 
-## 0. Two one-time actions on github.com
+## Status
+
+| Step | State |
+| --- | --- |
+| GitHub repo | **live** — https://github.com/LoserForLoser/dsh-workspace-merge (3 commits, `main`) |
+| Installable from the repo | **verified** — `dsh plugin add github:LoserForLoser/dsh-workspace-merge` installed in 5.9 s, added itself to `dsh.profile.bundles`, and its tools registered on a real boot |
+| Marketplace branch | **pushed** — `LoserForLoser/awesome-dsh-plugin`, branch `add-dsh-workspace-merge` (+1 file, data-only) |
+| Marketplace PR | **held by CI's own rule** — `MIN_AGE_DAYS = 1` in `scripts/check-submission.mjs`, and the repo was created 2026-09-11 05:25 UTC. Open the PR after **2026-09-12 13:30 (CST)** |
+| npm publish | **blocked** — this machine has no npm credential (`npm whoami` → `ENEEDAUTH`); npm accounts are separate from GitHub |
+| Repo metadata | **needs one web click** — add the `dsh-plugin` topic (and a description) under the repo's About panel; topics cannot be set over SSH |
+
+Open the PR here (branch already pushed):
+<https://github.com/LoserForLoser/awesome-dsh-plugin/pull/new/add-dsh-workspace-merge>
+
+Local CI equivalent, already run against the real repository data:
+
+* the entry yields **exactly +1 line in both `README.md` and `README.zh.md`**, in
+  the `workflow` section;
+* `url` and `name` agree, `category: workflow` is valid, the file is the only
+  thing the branch adds, and the generated READMEs are left untouched (the
+  intended data-only shape);
+* `npx awesome-lint` reports **0 errors** in a clone whose `origin` is upstream —
+  the two errors seen in the fork clone are only the fork's missing `awesome`
+  and `awesome-list` topics, which forks do not inherit. The 76 warnings are
+  pre-existing on `main`;
+* `SKIP_PUBLISH_CHECKS=1 node scripts/build-site.mjs` cannot be verified locally:
+  it derives each entry's added-date from full git history, which needs the real
+  PR checkout (`fetch-depth: 0`).
+
+## Remaining human actions
+
+1. **Add the `dsh-plugin` topic** to the plugin repo (About panel), plus a short
+   description.
+2. **Log in to npm** (`npm login`, same e-mail) or export `NPM_TOKEN`, then:
+
+   ```bash
+   cd /Users/songzhaoyang/Desktop/JLXY/dsh-workspace-merge
+   npm whoami                                   # must print your npm user first
+   npm publish --registry https://registry.npmjs.org/
+   ```
+
+   After this, `dsh plugin add dsh-workspace-merge` works by name for anyone.
+3. **Open the marketplace PR** once the repo is a day old (see above). No other
+   action is needed: the branch is pushed and verified.
+
+## Appendix: original checklist
+
+Everything below is already done except where the Status table says otherwise.
 
 1. **Add this machine's SSH key** — Settings → SSH and GPG keys → New SSH key,
    paste the line below (fingerprint
